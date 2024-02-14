@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.FourFindImage_kotlin" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">#142850</item>
+    </style>
+
+    <style name="Theme.FourFindImage_kotlin" parent="Base.Theme.FourFindImage_kotlin" />
+</resources>

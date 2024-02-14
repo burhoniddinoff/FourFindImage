@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Button">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginEnd">4dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Button.Answer">
+        <item name="android:background">@drawable/bg_answer</item>
+    </style>
+
+    <style name="Button.Next">
+        <item name="android:background">@drawable/bg_next</item>
+    </style>
+
+    <style name="Button.Quit">
+        <item name="android:background">@drawable/bg_quit</item>
+    </style>
+
+    <style name="Button.Variant">
+        <item name="android:background">@drawable/bg_variant</item>
+    </style>
+
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>
