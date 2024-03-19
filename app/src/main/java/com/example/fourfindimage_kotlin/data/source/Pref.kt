@@ -1,5 +1,6 @@
 package com.example.fourfindimage_kotlin.data.source
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 
@@ -23,8 +24,10 @@ class Pref private constructor(context: Context) {
 
     fun saveMoney(money: Int) = pref.edit().putInt("MONEY", money).apply()
     fun getMoney(): Int = pref.getInt("MONEY", 0)
+
+    @SuppressLint("CommitPrefEdits")
     fun saveAnswers(answers: List<String>) {
-        var sb: StringBuilder = StringBuilder()
+        val sb: StringBuilder = StringBuilder()
         for (answer: String in answers) {
             if (answer.isEmpty()) {
                 sb.append("*")
@@ -38,16 +41,17 @@ class Pref private constructor(context: Context) {
 
     fun getAnswers(): List<String> {
         val answer: String? = pref.getString("ANSWERS", "********")
-        var res: ArrayList<String> = ArrayList<String>()
-        for (i in 0 until answer!!.length){
-            if (answer[i]=='*'){
+        val res: ArrayList<String> = ArrayList()
+        for (i in 0 until answer!!.length) {
+            if (answer[i] == '*') {
                 res.add("")
-            }else{
+            } else {
                 res.add(answer[i].toString())
             }
         }
         return res
     }
+
     fun saveVariants(variants: List<Boolean?>) {
         val sb = java.lang.StringBuilder()
         for (variant in variants) {
@@ -59,15 +63,17 @@ class Pref private constructor(context: Context) {
         }
         pref.edit().putString("BUTTONS_VARIANTS", sb.toString()).apply()
     }
-    fun getVariants():List<Boolean>{
+
+    fun getVariants(): List<Boolean> {
         val variant = pref.getString("BUTTONS_VARIANTS", "000000000000")
-        var res: ArrayList<Boolean> = ArrayList<Boolean>()
-        for (i in 0 until variant!!.length){
-            if (variant[i]=='1')res.add(true)
+        val res: ArrayList<Boolean> = ArrayList()
+        for (i in 0 until variant!!.length) {
+            if (variant[i] == '1') res.add(true)
             else res.add(false)
         }
         return res
     }
-    fun saveLastLevel(level: Int) =pref.edit().putInt("LEVEL",level).apply()
-    fun getLastLevel():Int = pref.getInt("LEVEL",0)
+
+    fun saveLastLevel(level: Int) = pref.edit().putInt("LEVEL", level).apply()
+    fun getLastLevel(): Int = pref.getInt("LEVEL", 0)
 }

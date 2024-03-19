@@ -1,7 +1,8 @@
-package com.example.findwordkotlin.presentation.start
+package com.example.fourfindimage_kotlin.presentation.start
 
 import android.content.Context
 import com.example.fourfindimage_kotlin.presentation.start.StartContract
+import com.example.fourfindimage_kotlin.presentation.start.StartModel
 
 class StartPresenter(private val view: StartContract.View) : StartContract.Presenter {
     private val model: StartContract.Model

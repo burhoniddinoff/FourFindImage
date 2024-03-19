@@ -1,4 +1,4 @@
-package com.example.findwordkotlin.presentation.dialog
+package com.example.fourfindimage_kotlin.presentation.dialog
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -9,13 +9,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.fourfindimage_kotlin.R
 
-
 class MyDialog : DialogFragment() {
-    var listener: SelectListener? = null
+    private var listener: SelectListener? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         this.dialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         return inflater.inflate(R.layout.dialog, container)

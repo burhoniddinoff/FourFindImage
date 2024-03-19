@@ -1,4 +1,4 @@
-package com.example.findwordkotlin.presentation.dialog
+package com.example.fourfindimage_kotlin.presentation.dialog
 
 interface SelectListener {
     fun next()

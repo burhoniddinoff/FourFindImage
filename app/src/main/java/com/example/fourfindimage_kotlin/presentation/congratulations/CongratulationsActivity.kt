@@ -9,6 +9,7 @@ import com.example.fourfindimage_kotlin.R
 import com.example.fourfindimage_kotlin.domain.AppController
 
 class CongratulationsActivity : AppCompatActivity() {
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,4 +24,5 @@ class CongratulationsActivity : AppCompatActivity() {
         appController.saveMoney(0)
         finish()
     }
+
 }

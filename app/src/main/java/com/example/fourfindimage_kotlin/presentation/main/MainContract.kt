@@ -38,6 +38,5 @@ interface MainContract {
         fun clickVariant(index: Int)
         fun check()
         fun saveMoney()
-        fun load()
     }
 }

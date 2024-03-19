@@ -1,5 +1,6 @@
 package com.example.fourfindimage_kotlin.presentation.main
 
+import MainContract
 import android.content.Context
 import com.example.fourfindimage_kotlin.data.model.QuestionData
 import com.example.fourfindimage_kotlin.domain.AppController
@@ -47,4 +48,3 @@ class MainModel(context: Context) : MainContract.Model {
         return appController.getMoney()
     }
 }
-

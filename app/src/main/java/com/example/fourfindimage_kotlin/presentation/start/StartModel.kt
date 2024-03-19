@@ -1,4 +1,4 @@
-package com.example.findwordkotlin.presentation.start
+package com.example.fourfindimage_kotlin.presentation.start
 
 import android.content.Context
 import com.example.fourfindimage_kotlin.domain.AppController

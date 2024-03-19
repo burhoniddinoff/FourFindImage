@@ -1,12 +1,13 @@
 package com.example.fourfindimage_kotlin.presentation.main
 
+import MainContract
 import android.content.Context
 import com.example.fourfindimage_kotlin.data.model.QuestionData
 
-
 class MainPresenter(view: MainContract.View) : MainContract.Presenter {
+
     private var money = 0
-    private val MAX_LENGTH: Int = 8
+    private val max_length: Int = 8
     private var level: Int = 0
     private val answers: ArrayList<String?> = ArrayList()
     private val variants: ArrayList<Boolean> = ArrayList()
@@ -19,9 +20,8 @@ class MainPresenter(view: MainContract.View) : MainContract.Presenter {
 
     override fun clickAnswer(index: Int) {
         val clickedAnswer = answers[index]
-        if (clickedAnswer == null || clickedAnswer == "") {
-            return
-        }
+
+        if (clickedAnswer == null || clickedAnswer == "") return
         val questionData = model!!.getQuestionById(level)
         val variants: String = questionData!!.variants
 
@@ -79,13 +79,8 @@ class MainPresenter(view: MainContract.View) : MainContract.Presenter {
         model!!.saveMoney(money)
     }
 
-    override fun load() {
-    }
-
     override fun restart() {
-        for (i in answers.indices) {
-            clickAnswer(i)
-        }
+        for (i in answers.indices) clickAnswer(i)
     }
 
     override fun nextLevel() {
@@ -114,20 +109,20 @@ class MainPresenter(view: MainContract.View) : MainContract.Presenter {
         }
         money = model!!.getMoney()
         view!!.setMoney(money)
+
         val question: QuestionData? = model!!.getQuestionById(level)
         view!!.clearAnswer()
-        for (i in 0 until MAX_LENGTH) {
-            if (question!!.answer.length <= i) {
-                view!!.deleteAnswer(i)
-            } else {
-                answers.add(null)
-            }
+
+        for (i in 0 until max_length) {
+            if (question!!.answer.length <= i) view!!.deleteAnswer(i)
+            else answers.add(null)
         }
+
         view!!.setLevel(level + 1)
         view!!.setImages(question!!.getImages())
         view!!.setVariants(question.variants)
-        for (i in 0 until question.variants.length) {
-            variants.add(false)
-        }
+
+        for (i in 0 until question.variants.length) variants.add(false)
+
     }
 }

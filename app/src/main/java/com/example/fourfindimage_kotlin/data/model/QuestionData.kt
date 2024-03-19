@@ -5,7 +5,7 @@ data class QuestionData(
     var image1: Int, var image2: Int, var image3: Int, var image4: Int,
 ) {
     fun getImages(): List<Int> {
-        var images: ArrayList<Int> = ArrayList<Int>()
+        val images: ArrayList<Int> = ArrayList<Int>()
         images.add(image1)
         images.add(image2)
         images.add(image3)

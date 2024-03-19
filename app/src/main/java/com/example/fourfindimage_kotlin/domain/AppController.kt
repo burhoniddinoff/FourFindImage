@@ -5,7 +5,7 @@ import com.example.fourfindimage_kotlin.R
 import com.example.fourfindimage_kotlin.data.model.QuestionData
 import com.example.fourfindimage_kotlin.data.source.Pref
 
-class AppController private constructor(context: Context) {
+class AppController private constructor() {
     companion object {
         lateinit var pref: Pref
 
@@ -14,16 +14,12 @@ class AppController private constructor(context: Context) {
         fun getInstance(context: Context): AppController {
             if (instance == null) {
                 synchronized(this) {
-                    instance = AppController(context)
+                    instance = AppController()
                 }
             }
             pref = Pref.getInstance(context)
             return instance!!
         }
-    }
-
-    fun saveLetters(count: Int) {
-
     }
 
     fun saveMoney(score: Int) = pref.saveMoney(score)
@@ -34,6 +30,7 @@ class AppController private constructor(context: Context) {
     fun getVariants(): List<Boolean> = pref.getVariants()
     fun saveLastLevel(level: Int) = pref.saveLastLevel(level)
     fun getLastLevel(): Int = pref.getLastLevel()
+
     fun getQuestionByLevel(level: Int): QuestionData? {
         return when (level) {
             0 -> QuestionData(

@@ -11,11 +11,10 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.findwordkotlin.presentation.dialog.MyDialog
-import com.example.findwordkotlin.presentation.dialog.SelectListener
 import com.example.fourfindimage_kotlin.R
 import com.example.fourfindimage_kotlin.presentation.congratulations.CongratulationsActivity
-
+import com.example.fourfindimage_kotlin.presentation.dialog.MyDialog
+import com.example.fourfindimage_kotlin.presentation.dialog.SelectListener
 
 class MainActivity : AppCompatActivity(), MainContract.View {
     private var money: TextView? = null
@@ -26,6 +25,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     private var presenter: MainContract.Presenter? = null
     private var backButton: ImageView? = null
     private var resetButton: ImageView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -98,9 +98,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     override fun setImages(images: List<Int>) {
-        for (i in images.indices) {
-            this.images!![i].setImageResource(images[i])
-        }
+        for (i in images.indices) this.images!![i].setImageResource(images[i])
     }
 
     override fun clearAnswer() {
