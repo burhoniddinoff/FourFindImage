@@ -223,7 +223,7 @@
             android:src="@drawable/ic_back_2" />
 
         <Space
-            android:layout_width="60dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content" />
 
         <ImageView
@@ -233,6 +233,19 @@
             android:layout_height="45dp"
             android:padding="10dp"
             android:src="@drawable/ic_refresh_2" />
+
+        <Space
+            android:layout_width="40dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/key"
+            style="@style/Button.Variant"
+            android:layout_width="70dp"
+            android:layout_height="45dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_key_2" />
+
     </LinearLayout>
 
 </LinearLayout>

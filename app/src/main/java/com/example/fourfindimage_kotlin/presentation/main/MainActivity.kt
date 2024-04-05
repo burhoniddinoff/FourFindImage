@@ -3,6 +3,7 @@ package com.example.fourfindimage_kotlin.presentation.main
 import MainContract
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -47,15 +48,13 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         images!!.add(findViewById(R.id.imgQuestion2))
         images!!.add(findViewById(R.id.imgQuestion3))
         images!!.add(findViewById(R.id.imgQuestion4))
-        answers.addAll(findButtons(
-            R.id.containerAnswers, 0
-        ) { view: View -> clickAnswer(view) })
-        variants.addAll(findButtons(
-            R.id.containerVariant1, 0
-        ) { view: View -> clickVariant(view) })
-        variants.addAll(findButtons(
-            R.id.containerVariant2, variants.size
-        ) { view: View -> clickVariant(view) })
+        answers.addAll(findButtons(R.id.containerAnswers, 0) { view: View -> clickAnswer(view) })
+        variants.addAll(findButtons(R.id.containerVariant1, 0) { view: View -> clickVariant(view) })
+        variants.addAll(
+            findButtons(
+                R.id.containerVariant2,
+                variants.size
+            ) { view: View -> clickVariant(view) })
     }
 
     private fun clickAnswer(view: View) {
@@ -138,17 +137,20 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     override fun deleteAnswer(index: Int) {
-        if (index >= 0 && index < answers.size) {
-            answers[index].visibility = View.GONE
-        }
+        if (index >= 0 && index < answers.size) answers[index].visibility = View.GONE
     }
 
-    override fun showResult(message: String?) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    override fun showResult(s: String?) {
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
     }
 
     override fun exit() {
         finish()
+    }
+
+    override fun errorAnswerColor(boolean: Boolean) {
+        if (boolean) for (answer in answers) answer.setTextColor(Color.RED)
+        else for (answer in answers) answer.setTextColor(Color.WHITE)
     }
 
     override fun onStop() {

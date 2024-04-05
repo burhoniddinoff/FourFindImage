@@ -27,6 +27,8 @@ interface MainContract {
         fun showResult(s: String?)
         fun exit()
         fun setMoney(money: Int)
+        fun errorAnswerColor(boolean: Boolean)
+
     }
 
     interface Presenter {

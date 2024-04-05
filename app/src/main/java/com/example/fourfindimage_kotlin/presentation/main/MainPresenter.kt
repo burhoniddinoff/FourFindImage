@@ -19,6 +19,7 @@ class MainPresenter(view: MainContract.View) : MainContract.Presenter {
     }
 
     override fun clickAnswer(index: Int) {
+        view!!.errorAnswerColor(false)
         val clickedAnswer = answers[index]
 
         if (clickedAnswer == null || clickedAnswer == "") return
@@ -38,6 +39,7 @@ class MainPresenter(view: MainContract.View) : MainContract.Presenter {
     }
 
     override fun clickVariant(index: Int) {
+        view!!.errorAnswerColor(false)
         var freeIndex = answers.indexOf(null)
         if (freeIndex == -1) return
         val questionData = model!!.getQuestionById(level)
@@ -63,12 +65,11 @@ class MainPresenter(view: MainContract.View) : MainContract.Presenter {
         val correctAnswer: String = questionData!!.answer
 
         if (userAnswers.toString() != correctAnswer) {
-            view!!.showResult("Incorrect!")
-            money -= 5
-            view!!.setMoney(money)
+            view!!.errorAnswerColor(true)
             return
         }
         money += 10
+        view!!.errorAnswerColor(false)
         saveMoney()
         view!!.setMoney(money)
         model!!.setLevel(level + 1)
