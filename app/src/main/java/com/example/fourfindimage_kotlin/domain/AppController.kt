@@ -33,50 +33,91 @@ class AppController private constructor() {
 
     fun getQuestionByLevel(level: Int): QuestionData? {
         return when (level) {
-            0 -> QuestionData(
-                "pear",
-                "aslwvedzrfvp",
-                R.drawable.lg_nok_1,
-                R.drawable.lg_nok_2,
-                R.drawable.lg_nok_3,
-                R.drawable.lg_nok_4
-            )
+            0 ->
+//                QuestionData(
+//                "pear",
+//                "aslwvedzrfvp",
+//                R.drawable.lg_nok_1,
+//                R.drawable.lg_nok_2,
+//                R.drawable.lg_nok_3,
+//                R.drawable.lg_nok_4
+//            )
 
-            1 -> QuestionData(
-                "kiwi",
-                "awkasfcizfci",
-                R.drawable.kiwi_1,
-                R.drawable.kiwi_2,
-                R.drawable.kiwi_3,
-                R.drawable.kiwi_4
-            )
+                QuestionData(
+                    "network",
+                    "fknaarqowzet",
+                    R.drawable.net1,
+                    R.drawable.net2,
+                    R.drawable.net3,
+                    R.drawable.net4
+                )
 
-            2 -> QuestionData(
-                "peach",
-                "hecapacofrhd",
-                R.drawable.lg_shaftoli_1,
-                R.drawable.lg_shaftoli_2,
-                R.drawable.lg_shaftoli_3,
-                R.drawable.lg_shaftoli_4
-            )
+            1 ->
+//            QuestionData(
+//                "kiwi",
+//                "awkasfcizfci",
+//                R.drawable.kiwi_1,
+//                R.drawable.kiwi_2,
+//                R.drawable.kiwi_3,
+//                R.drawable.kiwi_4
+//            )
 
-            3 -> QuestionData(
-                "apple",
-                "asdjgpaspewl",
-                R.drawable.lg_olma_1,
-                R.drawable.lg_olma_2,
-                R.drawable.lg_olma_3,
-                R.drawable.lg_olma_4
-            )
+                QuestionData(
+                    "sky",
+                    "yawsdfzdkqla",
+                    R.drawable.sky1,
+                    R.drawable.sky2,
+                    R.drawable.sky3,
+                    R.drawable.sky4
+                )
 
-            4 -> QuestionData(
-                "banana",
-                "qabnewnaqoza",
-                R.drawable.lg_banan_1,
-                R.drawable.lg_banan_2,
-                R.drawable.lg_banan_3,
-                R.drawable.lg_banan_4
-            )
+
+            2 ->
+//                QuestionData(
+//                "peach",
+//                "hecapacofrhd",
+//                R.drawable.lg_shaftoli_1,
+//                R.drawable.lg_shaftoli_2,
+//                R.drawable.lg_shaftoli_3,
+//                R.drawable.lg_shaftoli_4
+//            )
+                QuestionData(
+                    "river",
+                    "araarezkizvq",
+                    R.drawable.rive1,
+                    R.drawable.rive2,
+                    R.drawable.rive3,
+                    R.drawable.rive4
+                )
+
+            3 ->
+//                QuestionData(
+//                "apple",
+//                "asdjgpaspewl",
+//                R.drawable.lg_olma_1,
+//                R.drawable.lg_olma_2,
+//                R.drawable.lg_olma_3,
+//                R.drawable.lg_olma_4
+//            )
+                QuestionData(
+                    "letter",
+                    "resldqtdedzt",
+                    R.drawable.letter1,
+                    R.drawable.letter2,
+                    R.drawable.letter3,
+                    R.drawable.letter4,
+                )
+
+            4 ->
+//                QuestionData(
+//                "banana",
+//                "qabnewnaqoza",
+//                R.drawable.lg_banan_1,
+//                R.drawable.lg_banan_2,
+//                R.drawable.lg_banan_3,
+//                R.drawable.lg_banan_4
+//            )
+                QuestionData("book", "kkabsdowswsk",R.drawable.library1, R.drawable.library2, R.drawable.library3, R.drawable.library4)
 
             5 -> QuestionData(
                 "lemon",

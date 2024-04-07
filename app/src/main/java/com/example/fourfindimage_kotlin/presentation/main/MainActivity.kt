@@ -66,11 +66,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         images!!.add(findViewById(R.id.imgQuestion4))
         answers.addAll(findButtons(R.id.containerAnswers, 0) { view: View -> clickAnswer(view) })
         variants.addAll(findButtons(R.id.containerVariant1, 0) { view: View -> clickVariant(view) })
-        variants.addAll(
-            findButtons(
-                R.id.containerVariant2,
-                variants.size
-            ) { view: View -> clickVariant(view) })
+        variants.addAll(findButtons(R.id.containerVariant2, variants.size) { view: View -> clickVariant(view) })
     }
 
     private fun clickAnswer(view: View) {

@@ -8,12 +8,12 @@ import com.example.fourfindimage_kotlin.utils.myLog
 
 class MainPresenter(view: MainContract.View) : MainContract.Presenter {
 
-    private var money = 100000000
+    private var money = 50
     private val max_length: Int = 8
     private var level: Int = 0
     private val answers: ArrayList<String?> = ArrayList()
     private val variants: ArrayList<Boolean> = ArrayList()
-    private var hintAnswer:ArrayList<String?> = ArrayList()
+    private var hintAnswer: ArrayList<String?> = ArrayList()
     private var view: MainContract.View? = view
     private var model: MainContract.Model? = null
 
@@ -41,7 +41,6 @@ class MainPresenter(view: MainContract.View) : MainContract.Presenter {
             }
         }
     }
-
 
 
     override fun clickVariant(index: Int) {
@@ -74,7 +73,7 @@ class MainPresenter(view: MainContract.View) : MainContract.Presenter {
             view!!.errorAnswerColor(true)
             return
         }
-        money += 10
+        money += 30
         view!!.errorAnswerColor(false)
         saveMoney()
         view!!.setMoney(money)
@@ -87,31 +86,31 @@ class MainPresenter(view: MainContract.View) : MainContract.Presenter {
     }
 
     override fun onClickKey() {
-        if (money<10)return
+        if (money < 10) return
         val question: QuestionData? = model!!.getQuestionById(level)
-        val indexHint=hintAnswer.indexOf(null)
-        val indexAnswer=answers.indexOf(null)
-        var index:Int=-1
+        val indexHint = hintAnswer.indexOf(null)
+        val indexAnswer = answers.indexOf(null)
+        var index: Int = -1
 
-        if (indexAnswer!=-1){
-            for (i in indexAnswer until hintAnswer.size){
-                if (hintAnswer[i]==null){
-                    index=i
+        if (indexAnswer != -1) {
+            for (i in indexAnswer until hintAnswer.size) {
+                if (hintAnswer[i] == null) {
+                    index = i
                     break
                 }
             }
 
-        }else{
+        } else {
             return
         }
-        if (index==-1)return
-        money-=10
+        if (index == -1) return
+        money -= 10
         view?.setMoney(money)
         "index=>$index".myLog()
         "index=>$question".myLog()
         "${hintAnswer.size}  size".myLog()
-        hintAnswer.set(index,(question!!.answer[index].toString()))
-        view?.setHintToIndex(index,(question.answer[index].toString()))
+        hintAnswer.set(index, (question!!.answer[index].toString()))
+        view?.setHintToIndex(index, (question.answer[index].toString()))
     }
 
     override fun restart() {
@@ -147,7 +146,7 @@ class MainPresenter(view: MainContract.View) : MainContract.Presenter {
         view!!.setMoney(money)
 
         val question: QuestionData? = model!!.getQuestionById(level)
-        hintAnswer=ArrayList()
+        hintAnswer = ArrayList()
         for (i in 0 until max_length) {
             if (question!!.answer.length <= i) view!!.deleteAnswer(i)
             else {
