@@ -10,6 +10,7 @@
     </style>
 
     <style name="Button.Answer">
+        <item name="android:textColorHint">#0027FF</item>
         <item name="android:background">@drawable/bg_answer</item>
     </style>
 

@@ -3,19 +3,23 @@ package com.example.fourfindimage_kotlin.presentation.main
 import MainContract
 import android.content.Context
 import com.example.fourfindimage_kotlin.data.model.QuestionData
+import com.example.fourfindimage_kotlin.utils.myErrorLog
+import com.example.fourfindimage_kotlin.utils.myLog
 
 class MainPresenter(view: MainContract.View) : MainContract.Presenter {
 
-    private var money = 0
+    private var money = 100000000
     private val max_length: Int = 8
     private var level: Int = 0
     private val answers: ArrayList<String?> = ArrayList()
     private val variants: ArrayList<Boolean> = ArrayList()
+    private var hintAnswer:ArrayList<String?> = ArrayList()
     private var view: MainContract.View? = view
     private var model: MainContract.Model? = null
 
     init {
-        this.model = MainModel(view as Context)
+        this.model =
+            MainModel(view as Context)
     }
 
     override fun clickAnswer(index: Int) {
@@ -37,6 +41,8 @@ class MainPresenter(view: MainContract.View) : MainContract.Presenter {
             }
         }
     }
+
+
 
     override fun clickVariant(index: Int) {
         view!!.errorAnswerColor(false)
@@ -80,6 +86,34 @@ class MainPresenter(view: MainContract.View) : MainContract.Presenter {
         model!!.saveMoney(money)
     }
 
+    override fun onClickKey() {
+        if (money<10)return
+        val question: QuestionData? = model!!.getQuestionById(level)
+        val indexHint=hintAnswer.indexOf(null)
+        val indexAnswer=answers.indexOf(null)
+        var index:Int=-1
+
+        if (indexAnswer!=-1){
+            for (i in indexAnswer until hintAnswer.size){
+                if (hintAnswer[i]==null){
+                    index=i
+                    break
+                }
+            }
+
+        }else{
+            return
+        }
+        if (index==-1)return
+        money-=10
+        view?.setMoney(money)
+        "index=>$index".myLog()
+        "index=>$question".myLog()
+        "${hintAnswer.size}  size".myLog()
+        hintAnswer.set(index,(question!!.answer[index].toString()))
+        view?.setHintToIndex(index,(question.answer[index].toString()))
+    }
+
     override fun restart() {
         for (i in answers.indices) clickAnswer(i)
     }
@@ -88,6 +122,7 @@ class MainPresenter(view: MainContract.View) : MainContract.Presenter {
         level++
         answers.clear()
         variants.clear()
+        view?.clearAnswer()
         setQuestion(false)
     }
 
@@ -108,15 +143,17 @@ class MainPresenter(view: MainContract.View) : MainContract.Presenter {
             view!!.startFinish()
             return
         }
-        money = model!!.getMoney()
+//        money = model!!.getMoney()
         view!!.setMoney(money)
 
         val question: QuestionData? = model!!.getQuestionById(level)
-        view!!.clearAnswer()
-
+        hintAnswer=ArrayList()
         for (i in 0 until max_length) {
             if (question!!.answer.length <= i) view!!.deleteAnswer(i)
-            else answers.add(null)
+            else {
+                answers.add(null)
+                hintAnswer.add(null)
+            }
         }
 
         view!!.setLevel(level + 1)

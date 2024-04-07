@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fourfindimage_kotlin.R
+import com.example.fourfindimage_kotlin.databinding.ActivityMainBinding
 import com.example.fourfindimage_kotlin.presentation.congratulations.CongratulationsActivity
 import com.example.fourfindimage_kotlin.presentation.dialog.MyDialog
 import com.example.fourfindimage_kotlin.presentation.dialog.SelectListener
@@ -26,14 +27,29 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     private var presenter: MainContract.Presenter? = null
     private var backButton: ImageView? = null
     private var resetButton: ImageView? = null
+    private var _binding:ActivityMainBinding?=null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        _binding= ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initialize()
         val s = intent.getBooleanExtra("game", false)
         presenter = MainPresenter(this)
         presenter!!.setQuestion(s)
+
+        initButtons()
+    }
+
+    override fun initButtons() {
+        binding.key.setOnClickListener {
+            presenter!!.onClickKey()
+        }
+    }
+
+    override fun setHintToIndex(index: Int, toString: String) {
+        answers[index].setHint(toString)
     }
 
     private fun initialize() {
@@ -104,6 +120,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         for (i in answers.indices) {
             answers[i].visibility = View.VISIBLE
             answers[i].text = ""
+            answers[i].hint=""
         }
     }
 

@@ -28,6 +28,8 @@ interface MainContract {
         fun exit()
         fun setMoney(money: Int)
         fun errorAnswerColor(boolean: Boolean)
+        fun initButtons()
+        abstract fun setHintToIndex(index: Int, toString: String)
 
     }
 
@@ -40,5 +42,6 @@ interface MainContract {
         fun clickVariant(index: Int)
         fun check()
         fun saveMoney()
+        fun onClickKey()
     }
 }
